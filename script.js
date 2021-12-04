@@ -108,7 +108,7 @@ for(let row=0;row<GAME_SIZE;row++){
     div.style.height = '100%';
     div.style.border = "1px solid black";
     div.className
-    div.innerText = counter;
+    // div.innerText = counter;
      if(counter>=92&&counter<99||counter>=73&&counter<78||counter>=114&&counter<117){
       div.className = tiles.cloud;
     }else if(counter>=127&&counter<131||counter>=147&&counter<151||counter>=166&&counter<172
