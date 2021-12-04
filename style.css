@@ -41,12 +41,16 @@
 .tool{
   height:100px;
   width: 100px;
-  /* border: 2px solid red; */
+  border: 2px solid white;
   color: white;
+  text-align: center;
 }
 
 .selected-tool{
   border: 2px solid blue;
+}
+.red{
+
 }
 
 .last-tile{
@@ -56,19 +60,18 @@
 }
 
 .pickaxe{
-  background-image: url('/img/pickaxe.jpg');
-  background-size: cover;
+  /* background-image: url('/img/pickaxe.jpg');
+  background-size: cover; */
   
 }
 .shovel{
-  background-image: url('/img/shovel.jpg');
+  /* background-image: url('/img/shovel.jpg');
   background-size: cover;
- 
+  */
 }
 .axe{
-  background-image: url('/img/axe.jpg');
-  background-size: cover;
- 
+  /* background-image: url('/img/axe.jpg');
+  background-size: cover; */
 }
 
 .sky{
@@ -89,13 +92,11 @@
 .stone{
   background-image: url('/img/stone.jpg');
 }
-.dirst-and-grass{
+.dirt-and-grass{
   background-image: url('/img/dirt_and_grass.jpg');
 }
 
-.blue{
-  background-color: blue;
-}
+
 
 
 

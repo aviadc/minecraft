@@ -5,7 +5,8 @@ const tiles = {
   grass: 'grass',
   timber: 'timber',
   stone: 'stone',
-  dirt: 'dirt'
+  dirt: 'dirt',
+  dirtAndGrass: 'dirt-and-grass'
 }
 const tools = {
   nothing: 0,
@@ -15,14 +16,14 @@ const tools = {
 }
 
 let selectedTool = tools.nothing;
-let lastSelectedTool =  tools.nothing;
+
 
 const gameBoard = document.querySelector('.game-board');
 
 const pickaxe = document.querySelector('.pickaxe');
 const shovel = document.querySelector('.shovel');
 const axe = document.querySelector('.axe');
-axe.classList.add('axe');
+
 
 const lastTile = document.querySelector('.last-tile');
 lastTile.setAttribute('isfull',false);
@@ -31,7 +32,7 @@ lastTile.setAttribute('lastclass','');
 
 
 function isSkyOrCloud(e){
-  if(e.target.className==='blue'&&e.target.className==='white'){
+  if(e.target.className===tiles.sky||e.target.className===tiles.cloud){
     return true;
   }
   return false;
@@ -50,11 +51,8 @@ gameBoard.addEventListener('click',(e)=>{
             if(lastTile.lastclass){
               lastTile.classList.remove(lastTile.lastclass)
             }
-            console.log(`lastclass is : ${lastTile.lastclass}`);
             lastTile.classList.add(tiles.stone);
-           
             lastTile.lastclass = tiles.stone;
-            console.log(`lastclass is : ${lastTile.lastclass}`);
             e.target.className = tiles.sky;
             if(!lastTile.isfull){
               lastTile.isfull=true;
@@ -62,12 +60,12 @@ gameBoard.addEventListener('click',(e)=>{
           }
           break; 
         case tools.shovel:
-          if(e.target.className===tiles.dirt){
+          if(e.target.className===tiles.dirt||e.target.className===tiles.dirtAndGrass){
             if(lastTile.lastclass){
               lastTile.classList.remove(lastTile.lastclass)
             }
-            lastTile.classList.add(tiles.dirt);
-            lastTile.lastclass = tiles.dirt;
+            lastTile.classList.add(e.target.className);
+            lastTile.lastclass = e.target.className;
             e.target.className = tiles.sky;
             if(!lastTile.isfull){
               lastTile.isfull=true;
@@ -92,8 +90,9 @@ gameBoard.addEventListener('click',(e)=>{
       }
   }else{ // if selected tool is null
     if(lastTile.isfull){
-      if(!isSkyOrCloud(e)){
+      if(e.target.className===tiles.sky){
         e.target.className=lastTile.lastclass;
+        lastTile.classList.remove(lastTile.lastclass);
         lastTile.isfull = false;
       }
     }
@@ -110,14 +109,23 @@ for(let row=0;row<GAME_SIZE;row++){
     div.style.border = "1px solid black";
     div.className
     div.innerText = counter;
-    if(counter<100){
-      div.className = tiles.sky;
-    }else if(counter>=100&&counter<200){
+     if(counter>=92&&counter<99||counter>=73&&counter<78||counter>=114&&counter<117){
+      div.className = tiles.cloud;
+    }else if(counter>=127&&counter<131||counter>=147&&counter<151||counter>=166&&counter<172
+      ||counter>=186&&counter<192){
       div.className = tiles.grass;
-    }else if(counter>=200&&counter<300){
+    }else if(counter>=208&&counter<210||counter>=228&&counter<230||counter>=248&&counter<250
+      ||counter>=268&&counter<270){
+      div.className = tiles.timber;
+    }else if(counter>=220&&counter<223||counter>=240&&counter<243||counter>=260&&counter<263
+      ||counter>=258&&counter<261||counter>=278&&counter<280){
       div.className = tiles.stone;
-    }else{
+    }else if(counter>=280&&counter<300){
+      div.className = tiles.dirtAndGrass;
+    }else if(counter>=300&&counter<=399){
       div.className = tiles.dirt;
+    }else{
+      div.className = tiles.sky;
     }
     counter++;
     gameBoard.appendChild(div);
@@ -138,44 +146,43 @@ function createGameBoard(){
 
 
 pickaxe.addEventListener('click',(e)=>{
+  if(selectedTool){
+    axe.classList.remove('selected-tool');
+    shovel.classList.remove('selected-tool');
+  }
   selectedTool = tools.pickaxe;
   pickaxe.classList.add('selected-tool');
-  if(lastSelectedTool){
-    if(lastSelectedTool===tools.axe){
-      axe.classList.remove('selected-tool')
-    }else{
-      shovel.classList.remove('selected-tool')
-    }
-  }
-})
+});
+
 shovel.addEventListener('click',(e)=>{
+  if(selectedTool){
+    axe.classList.remove('selected-tool');
+    pickaxe.classList.remove('selected-tool');
+  }
   selectedTool = tools.shovel;
   shovel.classList.add('selected-tool');
-  if(lastSelectedTool){
-    if(lastSelectedTool===tools.axe){
-      axe.classList.remove('selected-tool')
-    }else{
-      shovel.classList.remove('selected-tool')
-    }
-  }
-})
+});
+
 axe.addEventListener('click',(e)=>{
+  if(selectedTool){
+    pickaxe.classList.remove('selected-tool');
+    shovel.classList.remove('selected-tool');
+  }
+  console.log('im here');
   selectedTool = tools.axe;
   axe.classList.add('selected-tool');
-  if(lastSelectedTool){
-    if(lastSelectedTool===tools.axe){
-      axe.classList.remove('selected-tool')
-    }else{
-      shovel.classList.remove('selected-tool')
-    }
-  }
-})
-lastTile.addEventListener('click',(e)=>{
-  selectedTool = tools.nothing;
-  console.log(selectedTool);
-})
+});
 
-function selectedTool()
+lastTile.addEventListener('click',(e)=>{
+  if(selectedTool){
+    axe.classList.remove('selected-tool');
+    shovel.classList.remove('selected-tool');
+    pickaxe.classList.remove('selected-tool');
+  }
+  selectedTool = tools.nothing;
+});
+
+
 
 
 
