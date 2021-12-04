@@ -41,13 +41,60 @@
 .tool{
   height:100px;
   width: 100px;
-  border: 1px solid white;
+  /* border: 2px solid red; */
+  color: white;
+}
+
+.selected-tool{
+  border: 2px solid blue;
 }
 
 .last-tile{
   height: 50px;
   width: 50px;
   border: 1px solid white;
+}
+
+.pickaxe{
+  background-image: url('/img/pickaxe.jpg');
+  background-size: cover;
+  
+}
+.shovel{
+  background-image: url('/img/shovel.jpg');
+  background-size: cover;
+ 
+}
+.axe{
+  background-image: url('/img/axe.jpg');
+  background-size: cover;
+ 
+}
+
+.sky{
+  background-image: url('/img/sky.jpg');
+}
+.dirt{
+  background-image: url('/img/dirt.jpg');
+}
+.timber{
+  background-image: url('/img/timber.jpg');
+}
+.grass{
+  background-image: url('/img/grass.jpg');
+}
+.cloud{
+  background-color: white;
+}
+.stone{
+  background-image: url('/img/stone.jpg');
+}
+.dirst-and-grass{
+  background-image: url('/img/dirt_and_grass.jpg');
+}
+
+.blue{
+  background-color: blue;
 }
 
 
