@@ -60,18 +60,18 @@
 }
 
 .pickaxe{
-  /* background-image: url('/img/pickaxe.jpg');
-  background-size: cover; */
+  background-image: url('/img/pickaxe.jpg');
+  background-size: cover;
   
 }
 .shovel{
-  /* background-image: url('/img/shovel.jpg');
+  background-image: url('/img/shovel.jpg');
   background-size: cover;
-  */
+ 
 }
 .axe{
-  /* background-image: url('/img/axe.jpg');
-  background-size: cover; */
+  background-image: url('/img/axe.jpg');
+  background-size: cover;
 }
 
 .sky{

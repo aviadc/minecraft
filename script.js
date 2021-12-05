@@ -100,39 +100,43 @@ gameBoard.addEventListener('click',(e)=>{
 });
 
 
-
-let counter = 0;
-for(let row=0;row<GAME_SIZE;row++){
-  for(let col=0;col<GAME_SIZE;col++){
-    const div = document.createElement('div');
-    div.style.height = '100%';
-    div.style.border = "1px solid black";
-    div.className
-    // div.innerText = counter;
-     if(counter>=92&&counter<99||counter>=73&&counter<78||counter>=114&&counter<117){
-      div.className = tiles.cloud;
-    }else if(counter>=127&&counter<131||counter>=147&&counter<151||counter>=166&&counter<172
-      ||counter>=186&&counter<192){
-      div.className = tiles.grass;
-    }else if(counter>=208&&counter<210||counter>=228&&counter<230||counter>=248&&counter<250
-      ||counter>=268&&counter<270){
-      div.className = tiles.timber;
-    }else if(counter>=220&&counter<223||counter>=240&&counter<243||counter>=260&&counter<263
-      ||counter>=258&&counter<261||counter>=278&&counter<280){
-      div.className = tiles.stone;
-    }else if(counter>=280&&counter<300){
-      div.className = tiles.dirtAndGrass;
-    }else if(counter>=300&&counter<=399){
-      div.className = tiles.dirt;
-    }else{
-      div.className = tiles.sky;
+function createGaneBoared(){
+  let counter = 0;
+  for(let row=0;row<GAME_SIZE;row++){
+    for(let col=0;col<GAME_SIZE;col++){
+      const div = document.createElement('div');
+      div.style.height = '100%';
+      div.style.border = "1px solid black";
+      div.className
+      // div.innerText = counter;
+      if(counter>=92&&counter<99||counter>=73&&counter<78||counter>=114&&counter<117){
+        div.className = tiles.cloud;
+      }else if(counter>=127&&counter<131||counter>=147&&counter<151||counter>=166&&counter<172
+        ||counter>=186&&counter<192){
+        div.className = tiles.grass;
+      }else if(counter>=208&&counter<210||counter>=228&&counter<230||counter>=248&&counter<250
+        ||counter>=268&&counter<270){
+        div.className = tiles.timber;
+      }else if(counter>=220&&counter<223||counter>=240&&counter<243||counter>=260&&counter<263
+        ||counter>=258&&counter<261||counter>=278&&counter<280){
+        div.className = tiles.stone;
+      }else if(counter>=280&&counter<300){
+        div.className = tiles.dirtAndGrass;
+      }else if(counter>=300&&counter<=399){
+        div.className = tiles.dirt;
+      }else{
+        div.className = tiles.sky;
+      }
+      counter++;
+      gameBoard.appendChild(div);
     }
-    counter++;
-    gameBoard.appendChild(div);
   }
- 
+  console.log(counter);
 }
-console.log(counter);
+
+createGaneBoared();
+
+
 
 function draw(){
 
