@@ -1,4 +1,4 @@
-const GAME_SIZE = 20;
+const GAME_SIZE = 25;
 const tiles = {
   sky: 'sky',
   cloud: 'cloud',
@@ -49,23 +49,23 @@ function createGameBoard(){
   for(let row=0;row<GAME_SIZE;row++){
     for(let col=0;col<GAME_SIZE;col++){
       const div = document.createElement('div');
-      div.style.height = '100%';
-      div.style.border = "1px solid black";
+      div.className = 'tile';
+      div.innerText = counter;
       arrayOfDivsElement.push(div);
-      if(counter>=92&&counter<99||counter>=73&&counter<78||counter>=114&&counter<117){
+      if(counter>=93&&counter<98||counter>=118&&counter<123||counter>=69&&counter<72){
         div.className = tiles.cloud;
-      }else if(counter>=127&&counter<131||counter>=147&&counter<151||counter>=166&&counter<172
-        ||counter>=186&&counter<192){
+      }else if(counter>=284&&counter<290||counter>=260&&counter<264||counter>=234&&counter<240
+        ||counter>=210&&counter<215||counter>=185&&counter<188){
         div.className = tiles.grass;
-      }else if(counter>=208&&counter<210||counter>=228&&counter<230||counter>=248&&counter<250
-        ||counter>=268&&counter<270){
+      }else if(counter>=311&&counter<313||counter>=336&&counter<338||counter>=361&&counter<363
+        ||counter>=386&&counter<388||counter>=411&&counter<413){
         div.className = tiles.timber;
-      }else if(counter>=220&&counter<223||counter>=240&&counter<243||counter>=260&&counter<263
-        ||counter>=258&&counter<261||counter>=278&&counter<280){
+      }else if(counter>=325&&counter<328||counter>=350&&counter<353||counter>=375&&counter<378
+        ||counter>=400&&counter<403||counter>=397&&counter<400||counter>=422&&counter<425){
         div.className = tiles.stone;
-      }else if(counter>=280&&counter<300){
+      }else if(counter>=425&&counter<450){
         div.className = tiles.dirtAndGrass;
-      }else if(counter>=300&&counter<=399){
+      }else if(counter>=450){
         div.className = tiles.dirt;
       }else{
         div.className = tiles.sky;
@@ -139,20 +139,20 @@ resetGame.addEventListener('click',(e)=>{
   let counter = 0;
   for(let row=0;row<GAME_SIZE;row++){
     for(let col=0;col<GAME_SIZE;col++){
-      if(counter>=92&&counter<99||counter>=73&&counter<78||counter>=114&&counter<117){
+      if(counter>=93&&counter<98||counter>=118&&counter<123||counter>=69&&counter<72){
         arrayOfDivsElement[counter].className = tiles.cloud;
-      }else if(counter>=127&&counter<131||counter>=147&&counter<151||counter>=166&&counter<172
-        ||counter>=186&&counter<192){
+      }else if(counter>=284&&counter<290||counter>=260&&counter<264||counter>=234&&counter<240
+        ||counter>=210&&counter<215||counter>=185&&counter<188){
         arrayOfDivsElement[counter].className = tiles.grass;
-      }else if(counter>=208&&counter<210||counter>=228&&counter<230||counter>=248&&counter<250
-        ||counter>=268&&counter<270){
+      }else if(counter>=311&&counter<313||counter>=336&&counter<338||counter>=361&&counter<363
+        ||counter>=386&&counter<388||counter>=411&&counter<413){
         arrayOfDivsElement[counter].className = tiles.timber;
-      }else if(counter>=220&&counter<223||counter>=240&&counter<243||counter>=260&&counter<263
-        ||counter>=258&&counter<261||counter>=278&&counter<280){
+      }else if(counter>=325&&counter<328||counter>=350&&counter<353||counter>=375&&counter<378
+        ||counter>=400&&counter<403||counter>=397&&counter<400||counter>=422&&counter<425){
         arrayOfDivsElement[counter].className = tiles.stone;
-      }else if(counter>=280&&counter<300){
+      }else if(counter>=425&&counter<450){
         arrayOfDivsElement[counter].className = tiles.dirtAndGrass;
-      }else if(counter>=300&&counter<=399){
+      }else if(counter>=450){
         arrayOfDivsElement[counter].className = tiles.dirt;
       }else{
         arrayOfDivsElement[counter].className = tiles.sky;
@@ -167,7 +167,6 @@ resetGame.addEventListener('click',(e)=>{
   pickaxe.classList.remove('selected-tool');
   lastTile.classList.remove(lastTile.lastclass);
   lastTile.isfull = false;
-
 });
 
 pickaxe.addEventListener('click',(e)=>{
