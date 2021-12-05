@@ -28,6 +28,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  color: white;
 }
 
 .side-bar-inner{
@@ -49,8 +50,9 @@
 .selected-tool{
   border: 2px solid blue;
 }
-.red{
 
+.red{
+  border: 2px solid red;
 }
 
 .last-tile{

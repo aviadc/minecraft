@@ -16,9 +16,13 @@ const tools = {
 }
 
 let selectedTool = tools.nothing;
+let arrayOfDivsElement = [];
 
 
 const gameBoard = document.querySelector('.game-board');
+const resetGame = document.querySelector('.reset');
+
+
 
 const pickaxe = document.querySelector('.pickaxe');
 const shovel = document.querySelector('.shovel');
@@ -30,16 +34,46 @@ lastTile.setAttribute('isfull',false);
 lastTile.setAttribute('lastclass','');
 
 
+// function isSkyOrCloud(e){
+//   if(e.target.className===tiles.sky||e.target.className===tiles.cloud){
+//     return true;
+//   }
+//   return false;
+// }
 
-function isSkyOrCloud(e){
-  if(e.target.className===tiles.sky||e.target.className===tiles.cloud){
-    return true;
+
+function createGameBoard(){
+  let counter = 0;
+  for(let row=0;row<GAME_SIZE;row++){
+    for(let col=0;col<GAME_SIZE;col++){
+      const div = document.createElement('div');
+      div.style.height = '100%';
+      div.style.border = "1px solid black";
+      arrayOfDivsElement.push(div);
+      if(counter>=92&&counter<99||counter>=73&&counter<78||counter>=114&&counter<117){
+        div.className = tiles.cloud;
+      }else if(counter>=127&&counter<131||counter>=147&&counter<151||counter>=166&&counter<172
+        ||counter>=186&&counter<192){
+        div.className = tiles.grass;
+      }else if(counter>=208&&counter<210||counter>=228&&counter<230||counter>=248&&counter<250
+        ||counter>=268&&counter<270){
+        div.className = tiles.timber;
+      }else if(counter>=220&&counter<223||counter>=240&&counter<243||counter>=260&&counter<263
+        ||counter>=258&&counter<261||counter>=278&&counter<280){
+        div.className = tiles.stone;
+      }else if(counter>=280&&counter<300){
+        div.className = tiles.dirtAndGrass;
+      }else if(counter>=300&&counter<=399){
+        div.className = tiles.dirt;
+      }else{
+        div.className = tiles.sky;
+      }
+      counter++;
+      gameBoard.appendChild(div);
+    }
   }
-  return false;
+  console.log(counter);
 }
-
-
-
 
 
 gameBoard.addEventListener('click',(e)=>{
@@ -99,55 +133,40 @@ gameBoard.addEventListener('click',(e)=>{
   }
 });
 
-
-function createGaneBoared(){
+resetGame.addEventListener('click',(e)=>{
   let counter = 0;
   for(let row=0;row<GAME_SIZE;row++){
     for(let col=0;col<GAME_SIZE;col++){
-      const div = document.createElement('div');
-      div.style.height = '100%';
-      div.style.border = "1px solid black";
-      div.className
-      // div.innerText = counter;
       if(counter>=92&&counter<99||counter>=73&&counter<78||counter>=114&&counter<117){
-        div.className = tiles.cloud;
+        arrayOfDivsElement[counter].className = tiles.cloud;
       }else if(counter>=127&&counter<131||counter>=147&&counter<151||counter>=166&&counter<172
         ||counter>=186&&counter<192){
-        div.className = tiles.grass;
+        arrayOfDivsElement[counter].className = tiles.grass;
       }else if(counter>=208&&counter<210||counter>=228&&counter<230||counter>=248&&counter<250
         ||counter>=268&&counter<270){
-        div.className = tiles.timber;
+        arrayOfDivsElement[counter].className = tiles.timber;
       }else if(counter>=220&&counter<223||counter>=240&&counter<243||counter>=260&&counter<263
         ||counter>=258&&counter<261||counter>=278&&counter<280){
-        div.className = tiles.stone;
+        arrayOfDivsElement[counter].className = tiles.stone;
       }else if(counter>=280&&counter<300){
-        div.className = tiles.dirtAndGrass;
+        arrayOfDivsElement[counter].className = tiles.dirtAndGrass;
       }else if(counter>=300&&counter<=399){
-        div.className = tiles.dirt;
+        arrayOfDivsElement[counter].className = tiles.dirt;
       }else{
-        div.className = tiles.sky;
+        arrayOfDivsElement[counter].className = tiles.sky;
       }
       counter++;
-      gameBoard.appendChild(div);
     }
   }
   console.log(counter);
-}
+  selectedTool = tools.nothing;
+  axe.classList.remove('selected-tool');
+  shovel.classList.remove('selected-tool');
+  pickaxe.classList.remove('selected-tool');
+  lastTile.classList.remove(lastTile.lastclass);
+  lastTile.isfull = false;
 
-createGaneBoared();
-
-
-
-function draw(){
-
-}
-
-function createGameBoard(){
-
-}
-
-
-
+});
 
 pickaxe.addEventListener('click',(e)=>{
   if(selectedTool){
@@ -186,7 +205,7 @@ lastTile.addEventListener('click',(e)=>{
   selectedTool = tools.nothing;
 });
 
-
+createGameBoard();
 
 
 
