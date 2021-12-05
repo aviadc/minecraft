@@ -21,6 +21,8 @@ let arrayOfDivsElement = [];
 
 const gameBoard = document.querySelector('.game-board');
 const resetGame = document.querySelector('.reset');
+const startGameContainer = document.querySelector('.start-game');
+const startGameBtn = document.querySelector('.start-game-button');
 
 
 
@@ -204,6 +206,10 @@ lastTile.addEventListener('click',(e)=>{
   }
   selectedTool = tools.nothing;
 });
+
+startGameBtn.addEventListener('click',(e)=>{
+  startGameContainer.className = "none";
+})
 
 createGameBoard();
 
