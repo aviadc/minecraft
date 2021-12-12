@@ -50,7 +50,7 @@ function createGameBoard(){
     for(let col=0;col<GAME_SIZE;col++){
       const div = document.createElement('div');
       div.className = 'tile';
-      div.innerText = counter;
+      // div.innerText = counter;
       arrayOfDivsElement.push(div);
       if(counter>=93&&counter<98||counter>=118&&counter<123||counter>=69&&counter<72){
         div.className = tiles.cloud;
